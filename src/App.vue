@@ -1,45 +1,54 @@
 <template>
-    <div id="app">
+    <div id="app" class="vue-list-package">
+
         <template v-if="countItems">
-            <ul class="list-group">
-                <item v-for="(dataItem, index) in dataItems"
-                      :key="index"
-                      :data="dataItem"
-                ></item>
-            </ul>
+            <template v-if="header">
+                <div class="header">{{ header }}</div>
+            </template>
+
+            <template v-if="type === 'ul'">
+                <UlType :items="items"></UlType>
+            </template>
+
+            <template v-if="type === 'ol'">
+                <OlType :items="items"></OlType>
+            </template>
         </template>
+
         <template v-else>{{ emptyListMsg }}</template>
     </div>
 </template>
 
 <script>
-    import Item from './components/Item.vue'
+    import UlType from "./components/types/UlType";
+    import OlType from "./components/types/OlType";
 
     export default {
         name: 'app',
         components: {
-            Item,
+            UlType,
+            OlType,
         },
         props: {
+            // items: Array || Object,
+            header: String,
             listType: String,
         },
         computed: {
             type: function () {
-                let type = this.listType ? this.listType : 'ul';
-
-                if (this.listTypes.includes(this.listType)) {
-                    return type;
-                }
-                // return ;
+                return this.listTypes.includes(this.listType) ? this.listType : 'ul';
             },
             countItems: function () {
-                return this.dataItems.length;
+                return this.items ? this.items.length : null;
             },
         },
         data() {
             return {
-                listTypes: ['ul', 'ol', 'div'],
-                dataItems: ['One'],
+                items: ['One', 'Two', 'Three'],
+                // header: 'Test',
+                // listType: '',
+
+                listTypes: ['ul', 'ol'],
                 emptyListMsg: 'List is empty.',
             }
         }
@@ -48,6 +57,11 @@
 
 <style lang="scss">
     #app {
+        .header {
+            margin: 0 0 7px 10px;
+            font-size: 1.3rem;
+        }
+
         .list-group {
             margin: 0;
             padding: 0;

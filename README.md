@@ -1,24 +1,15 @@
-# vuelistpackage
+# Vue List Package
 
-## Project setup
-```
-npm install
-```
+**Props**
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+`listType`: 'ul' (default) | 'ol' | null;
 
-### Compiles and minifies for production
-```
-npm run build
-```
+`header`: String | null (default);
 
-### Lints and fixes files
-```
-npm run lint
-```
+`dataItems`: Array | null;
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+If `dataItems` is empty return message (emptyListMsg).
+
+`emptyListMsg`: String | null;
+
+Message if list is empty.
