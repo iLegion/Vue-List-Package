@@ -1,8 +1,8 @@
 import Vue from 'vue'
-// import App from './App.vue'
+import VueListPackage from './VueListPackage.vue'
 
 Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(),
+  render: h => h(VueListPackage),
 }).$mount('#app');
