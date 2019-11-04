@@ -1,7 +1,17 @@
 {
   "name": "vuelistpackage",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "keywords": ["vue", "list", "vuelistpackage"],
+  "description": "Vue package for lists.",
+  "author": {
+    "name": "Yusif Zourab",
+    "email": "wordlearningpress@gmail.com"
+  },
+  "repository": "https://github.com/iLegion/Vue-List-Package.git",
+  "bugs": "https://github.com/iLegion/Vue-List-Package/issues",
+  "license": "MIT",
+  "files": ["dist/*"],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
