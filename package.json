@@ -2,7 +2,11 @@
   "name": "vuelistpackage",
   "version": "0.1.0",
   "private": false,
-  "keywords": ["vue", "list", "vuelistpackage"],
+  "keywords": [
+    "vue",
+    "list",
+    "vuelistpackage"
+  ],
   "description": "Vue package for lists.",
   "author": {
     "name": "Yusif Zourab",
@@ -11,11 +15,20 @@
   "repository": "https://github.com/iLegion/Vue-List-Package.git",
   "bugs": "https://github.com/iLegion/Vue-List-Package/issues",
   "license": "MIT",
-  "files": ["dist/*"],
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
+  },
+  "main": "dist/vuelistpackage.umd.js",
+  "module": "dist/vuelistpackage.esm.js",
+  "unpkg": "dist/vuelistpackage.umd.min.js",
+  "browser": {
+    "./sfc": "src/App.vue"
   },
   "dependencies": {
     "core-js": "^3.3.6",
