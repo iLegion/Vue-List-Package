@@ -28,7 +28,7 @@
   "module": "dist/vuelistpackage.esm.js",
   "unpkg": "dist/vuelistpackage.umd.min.js",
   "browser": {
-    "./sfc": "src/App.vue"
+    "./sfc": "src/VueListPackage.vue"
   },
   "dependencies": {
     "core-js": "^3.3.6",
