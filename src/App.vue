@@ -40,12 +40,12 @@
             OlType,
         },
         props: {
-            // items: Array || Object,
-            // header: String,
-            // listType: String,
-            // emptyListMsg: String,
-            // styles: Object,
-            // active: String,
+            items: Array || Object,
+            header: String,
+            listType: String,
+            emptyListMsg: String,
+            styles: Object,
+            active: String,
         },
         computed: {
             type: function () {
@@ -73,17 +73,6 @@
         },
         data() {
             return {
-                items: ['One', 'Two', 'Three'],
-                active: '0',
-                header: 'Test',
-                listType: '',
-                styles: {
-                    class: 'bootstrap',
-                    listType: 'none',
-                    colorActive: 'danger',
-                },
-                emptyListMsg: 'List is empty',
-
                 listTypes: ['ul', 'ol'],
                 errors: {},
             }
