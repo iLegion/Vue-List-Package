@@ -55,11 +55,13 @@
                 return this.items ? this.items.length : null;
             },
             isEmptyList() {
-                if (typeof this.emptyListMsg !== 'string') {
+                if (this.emptyListMsg === undefined) {
+                    return 'List is empty.';
+                } else if (typeof this.emptyListMsg !== 'string') {
                     return "'emptyListMsg' is must be a String.";
                 }
 
-                return this.emptyListMsg ? String(this.emptyListMsg) : null;
+                return this.emptyListMsg;
             },
             styleClass() {
                 return this.styles && this.styles.class ? this.styles.class : 'bootstrap';
