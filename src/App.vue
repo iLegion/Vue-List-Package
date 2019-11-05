@@ -34,13 +34,13 @@
     import OlType from "./components/types/OlType";
 
     export default {
-        name: 'app',
+        name: 'VueListPackage',
         components: {
             UlType,
             OlType,
         },
         props: {
-            items: Array || Object,
+            // items: {},
             header: String,
             listType: String,
             emptyListMsg: String,
@@ -52,6 +52,10 @@
                 return this.listTypes.includes(this.listType) ? this.listType : 'ul';
             },
             countItems: function () {
+                if (typeof this.items === 'object') {
+                    return Object.keys(this.items).length;
+                }
+
                 return this.items ? this.items.length : null;
             },
             isEmptyList() {
@@ -76,7 +80,6 @@
         data() {
             return {
                 listTypes: ['ul', 'ol'],
-                errors: {},
             }
         }
     }

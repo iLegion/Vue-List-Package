@@ -1,7 +1,8 @@
 <template>
     <li class="list-group-item"
         :class="[{ active: active }, colorActiveElement]"
-    >{{ value }}</li>
+    >{{ value }}
+    </li>
 </template>
 
 <script>
@@ -12,7 +13,7 @@
             value: String,
             active: Boolean,
             colorActiveElement: String,
-        }
+        },
     }
 </script>
 

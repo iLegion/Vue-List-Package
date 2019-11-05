@@ -1,8 +1,8 @@
 <template>
     <ol class="list-group" :class="styleClass" :style="listType">
-        <LiItem v-for="(item, index) in items"
+        <LiItem v-for="(item, index, i) in items"
                 :key="index"
-                :i="index"
+                :i="i"
                 :value="item"
                 :active="active === index"
                 :colorActiveElement="colorActiveElement"
@@ -15,9 +15,9 @@
 
     export default {
         name: "OlType",
-        components: {LiItem},
+        components: { LiItem },
         props: {
-            items: Array || Object,
+            items: {},
             styles: Object,
             styleClass: String,
             active: Number,
