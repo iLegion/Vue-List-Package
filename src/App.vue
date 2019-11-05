@@ -40,7 +40,7 @@
             OlType,
         },
         props: {
-            // items: {},
+            items: {},
             header: String,
             listType: String,
             emptyListMsg: String,

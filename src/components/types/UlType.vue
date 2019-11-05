@@ -15,7 +15,7 @@
 
     export default {
         name: "UlType",
-        components: {LiItem},
+        components: { LiItem },
         props: {
             items: {},
             styles: Object,
