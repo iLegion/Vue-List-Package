@@ -16,12 +16,9 @@ If `listType` does not match any of the types above, then the default value will
 
 `items`: Array | Object | null;
 
-`items` must be contains only single-level array (['one', 'two']) or 
-object ({ 'vuelistpackage': 'test', 'lorem': 'ipsum'}).
-
 If `items` is empty return message (emptyListMsg).
 
-If `items` is Object, it must have prop **name** or **title** for view.
+If `items` elements is Object, it must have prop **name** or **title** for view.
 
 `emptyListMsg`: String | null;
 

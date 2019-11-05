@@ -40,7 +40,7 @@
             OlType,
         },
         props: {
-            items: {},
+            items: [ Array, Object ],
             header: String,
             listType: String,
             emptyListMsg: String,
@@ -88,8 +88,11 @@
 <style lang="scss">
     .vue-list-package {
         .header {
-            margin: 0 0 7px 10px;
-            font-size: 1.3rem;
+            margin: 0 0 16px 0;
+            font-size: 1.35rem;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.2;
         }
 
         .bootstrap {

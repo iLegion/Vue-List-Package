@@ -17,7 +17,7 @@
         name: "OlType",
         components: { LiItem },
         props: {
-            items: {},
+            items: [ Array, Object ],
             styles: Object,
             styleClass: String,
             active: Number,
