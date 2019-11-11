@@ -1,10 +1,11 @@
 <template>
     <ol class="list-group" :class="styleClass" :style="listType">
         <LiItem v-for="(item, index, i) in items"
-                :key="index"
+                :key="i"
                 :i="i"
                 :value="item"
-                :active="active === index"
+                :active="active === i"
+                :disabled="disabled === i"
                 :colorActiveElement="colorActiveElement"
         ></LiItem>
     </ol>
@@ -21,6 +22,7 @@
             styles: Object,
             styleClass: String,
             active: Number,
+            disabled: Number,
             colorActiveElement: String,
         },
         computed: {

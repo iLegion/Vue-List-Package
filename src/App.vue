@@ -11,6 +11,7 @@
                         :styles="styles"
                         :styleClass="styleClass"
                         :active="activeElement"
+                        :disabled="disabledElement"
                         :colorActiveElement="colorActiveElement"
                 ></UlType>
             </template>
@@ -20,8 +21,19 @@
                         :styles="styles"
                         :styleClass="styleClass"
                         :active="activeElement"
+                        :disabled="disabledElement"
                         :colorActiveElement="colorActiveElement"
                 ></OlType>
+            </template>
+
+            <template v-if="type === 'div'">
+                <DivType :items="items"
+                         :styles="styles"
+                         :styleClass="styleClass"
+                         :active="activeElement"
+                         :disabled="disabledElement"
+                         :colorActiveElement="colorActiveElement"
+                ></DivType>
             </template>
         </template>
 
@@ -32,12 +44,14 @@
 <script>
     import UlType from "./components/types/UlType";
     import OlType from "./components/types/OlType";
+    import DivType from "./components/types/DivType";
 
     export default {
         name: 'VueListPackage',
         components: {
             UlType,
             OlType,
+            DivType,
         },
         props: {
             items: [ Array, Object ],
@@ -46,6 +60,7 @@
             emptyListMsg: String,
             styles: Object,
             active: String,
+            disabled: String,
         },
         computed: {
             type: function () {
@@ -73,17 +88,23 @@
             activeElement() {
                 return this.active ? Number(this.active) : null;
             },
+            disabledElement() {
+                return this.disabled ? Number(this.disabled) : null;
+            },
             colorActiveElement() {
                 return this.styles && this.styles.colorActive ? this.styles.colorActive : 'primary';
             },
         },
         data() {
             return {
-                listTypes: ['ul', 'ol'],
+                listTypes: ['ul', 'ol', 'div'],
             }
         }
     }
 </script>
+
+
+
 
 <style lang="scss">
     .vue-list-package {
@@ -135,7 +156,55 @@
                         border-color: #dc3545;
                     }
                 }
+
+                &.disabled {
+                    color: #6c757d;
+                    pointer-events: none;
+                    background-color: #fff;
+                }
             }
+
+            .list-group-item-action {
+                color: #495057;
+                text-align: inherit;
+                text-decoration: none;
+
+                &:hover {
+                    z-index: 1;
+                    color: #495057;
+                    text-decoration: none;
+                    background-color: #f8f9fa;
+                }
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: .25em .4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25rem;
+        }
+
+        .badge-pill {
+            padding-right: .6em;
+            padding-left: .6em;
+            border-radius: 10rem;
+        }
+
+        .badge-primary {
+            color: #fff;
+            background-color: #007bff;
+        }
+
+        .has-badge {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
         }
     }
 </style>

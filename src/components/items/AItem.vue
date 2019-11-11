@@ -1,17 +1,17 @@
 <template>
-    <li class="list-group-item"
-        :class="[{ active: active }, { disabled: disabled}, colorActiveElement, { 'has-badge': badge }]"
+    <a :href="link" class="list-group-item list-group-item-action"
+       :class="[{ active: active }, { disabled: disabled}, colorActiveElement, { 'has-badge': badge }]"
     >
         {{ content }}
 
         <span v-if="badge"
               class="badge badge-primary badge-pill">{{ badge }}</span>
-    </li>
+    </a>
 </template>
 
 <script>
     export default {
-        name: "LiItem",
+        name: "AItem",
         props: {
             i: Number,
             value: [ String, Object ],
@@ -31,15 +31,20 @@
 
                 return this.value;
             },
+            link() {
+                if (this.value.href || this.value.link) {
+                    return this.value.href ? this.value.href : this.value.link;
+                }
+
+                return null;
+            },
             badge() {
                 return this.value.badge ? this.value.badge : null;
-            },
+            }
         },
     }
 </script>
 
 <style scoped>
-    li {
-        display: list-item !important;
-    }
+
 </style>
