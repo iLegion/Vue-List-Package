@@ -4,8 +4,8 @@
                 :key="i"
                 :i="i"
                 :value="item"
-                :active="active === i"
-                :disabled="disabled === i"
+                :active="active === index"
+                :disabled="disabled === index"
                 :colorActiveElement="colorActiveElement"
         ></LiItem>
     </ul>

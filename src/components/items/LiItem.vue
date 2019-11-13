@@ -32,7 +32,7 @@
                 return this.value;
             },
             badge() {
-                return this.value.badge ? this.value.badge : null;
+                return typeof this.value === 'object' && this.value.badge ? this.value.badge : null;
             },
         },
     }

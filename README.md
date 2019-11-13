@@ -5,8 +5,8 @@
 `listType`: 'ul' (default) | 'ol' | 'div' | null;
 
 `listType` contains type for list in HTML.
-See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul and 
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol .
+See [ul](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul) and 
+[ol](ttps://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol).
 
 If `listType` does not match any of the types above, then the default value will be set.
 
@@ -24,22 +24,54 @@ If `listType` is 'div', `items` property of links must contains **href**(priorit
 
 For badges, add property `badge` for `items` elements if have this.
 
-`emptyListMsg`: String | null;
-
-If list is empty, show this message.
-
 `styles`: Object | null;
 
-   `styles.class`: 'default' | 'bootstrap' (default) | null;
+`styles.class`: 'default' | 'materialize' | 'bootstrap' (default) | null;
    
-   Ready-made styles for the list.
+Ready-made styles for the list.
    
-   `styles.listType`: See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type | null;
+`styles.listType`: See [this](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type) | null;
    
-   `styles.colorActive`: 'primary' (default) | 'secondary' | 'success' | 'danger' | null;
-   
-   Color for active element.
-   
- `disabled`: String | Array | null
+`styles.colorActive`: 
 
-Number disabled element.
+For bootstrap: 'primary' (default) | 'secondary' | 'success' | 'danger' | null;
+
+For materialize: 'primary' (default) | 'red' | 'purple' | null;
+   
+Color for active element.
+
+`active`: String | null;
+
+The number or property name of the active element.
+   
+`disabled`: String | null
+
+The number or property name of the disabled element.
+
+`config`: Object | null,
+
+`config.emptyListMsg` is object with config for message if list is empty.
+
+`config.emptyListMsg.class`: String | null
+
+ID for div element.
+
+`config.emptyListMsg.class`: String | Array | null;
+
+Classname for div element.
+
+`config.emptyListMsg.isComponent`: Boolean | null;
+
+Is the message component.
+
+`config.emptyListMsg.componentName`: 'String' | null;
+
+Contains a correct globally registered component name.
+
+`config.emptyListMsg.text`: 'String' | null;
+
+Contains a message. If `config.emptyListMsg.isComponent` and` config.emptyListMsg.componentName` are true, the message will be inserted into the slot. 
+
+**Methods**
+
+Default callback life cycle: beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed. See [this](https://vuejs.org/v2/guide/instance.html).

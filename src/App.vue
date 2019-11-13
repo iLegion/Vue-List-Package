@@ -37,7 +37,12 @@
             </template>
         </template>
 
-        <template v-else>{{ isEmptyList }}</template>
+        <template v-else>
+            <component v-if="isListMsgComponent" :is="listMsg">{{ this.config.emptyListMsg.text }}</component>
+            <div v-else
+                 :id="this.config.emptyListMsg.id"
+                 :class="this.config.emptyListMsg.class">{{ listMsg }}</div>
+        </template>
     </div>
 </template>
 
@@ -55,32 +60,43 @@
         },
         props: {
             items: [ Array, Object ],
+            config: {
+                emptyListMsg: {
+                    id: String,
+                    class: [ String, Array ],
+                    isComponent: Boolean,
+                    componentName: String,
+                    text: String,
+                }
+            },
             header: String,
             listType: String,
-            emptyListMsg: String,
-            styles: Object,
+            styles: {
+                class: String,
+                listType: String,
+                colorActive: String,
+            },
             active: String,
             disabled: String,
         },
         computed: {
-            type: function () {
-                return this.listTypes.includes(this.listType) ? this.listType : 'ul';
-            },
             countItems: function () {
                 if (typeof this.items === 'object') {
                     return Object.keys(this.items).length;
+                } else if (Array.isArray(this.items)) {
+                    return this.items.length;
                 }
 
-                return this.items ? this.items.length : null;
+                return null;
             },
-            isEmptyList() {
-                if (this.emptyListMsg === undefined) {
-                    return 'List is empty.';
-                } else if (typeof this.emptyListMsg !== 'string') {
-                    return "'emptyListMsg' is must be a String.";
-                }
-
-                return this.emptyListMsg;
+            isListMsgComponent() {
+              return !!(this.config.emptyListMsg.isComponent && this.config.emptyListMsg.componentName);
+            },
+            listMsg() {
+                return this.config.emptyListMsg.componentName ? this.config.emptyListMsg.componentName : 'List is empty.';
+            },
+            type: function () {
+                return this.listTypes.includes(this.listType) ? this.listType : 'ul';
             },
             styleClass() {
                 return this.styles && this.styles.class ? this.styles.class : 'bootstrap';
@@ -92,19 +108,40 @@
                 return this.disabled ? Number(this.disabled) : null;
             },
             colorActiveElement() {
-                return this.styles && this.styles.colorActive ? this.styles.colorActive : 'primary';
+                return this.styles && this.styles.colorActive ? this.styles.colorActive : 'default';
             },
         },
         data() {
             return {
                 listTypes: ['ul', 'ol', 'div'],
             }
-        }
+        },
+        beforeCreate() {
+            this.$emit('beforeCreate');
+        },
+        created() {
+            this.$emit('created');
+        },
+        beforeMount() {
+            this.$emit('beforeMount');
+        },
+        mounted() {
+            this.$emit('mounted');
+        },
+        beforeUpdate() {
+            this.$emit('beforeUpdate');
+        },
+        updated() {
+            this.$emit('updated');
+        },
+        beforeDestroy() {
+            this.$emit('beforeDestroy');
+        },
+        destroyed() {
+            this.$emit('destroyed');
+        },
     }
 </script>
-
-
-
 
 <style lang="scss">
     .vue-list-package {
@@ -135,7 +172,7 @@
                 background-color: #fff;
                 border: 1px solid rgba(0, 0, 0, .125);
 
-                &.active, &.active.primary {
+                &.active, &.active.primary, &.active.default {
                     color: #fff;
                     background-color: #007bff;
                     border-color: #007bff;
@@ -205,6 +242,46 @@
             display: flex !important;
             justify-content: space-between;
             align-items: center;
+        }
+
+        div.materialize {
+            margin: .5rem 0 1rem 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+
+            a {
+                display: block;
+                -webkit-transition: .25s;
+                transition: .25s;
+                color: #26a69a;
+                background-color: #fff;
+                line-height: 1.5rem;
+                padding: 10px 20px;
+                margin: 0;
+                border-bottom: 1px solid #e0e0e0;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: #ddd;
+                }
+
+                &.active, &.active.default {
+                    background-color: #26a69a;
+                    color: #eafaf9;
+
+                    &.red {
+                        color: rgba(255, 255, 255, 0.9);
+                        background-color: #D32F2F
+                    }
+
+                    &.purple {
+                        color: rgba(255, 255, 255, 0.9);
+                        background-color: #4a148c;
+                    }
+                }
+            }
         }
     }
 </style>
