@@ -1,6 +1,24 @@
 # Vue List Package
 
-**Props**
+##Installation
+
+    git clone https://github.com/iLegion/Vue-List-Package.git 
+    cd Vue-List-Package
+    npm run build
+
+This will create some builds in the dist directory.
+- UMD : vuelistpackage.umd.js and vuelistpackage.umd.min.js
+- CommonJS: vuelistpackage.common.js
+
+You can add `vuelistpackage` as an npm dependency:
+    
+    npm i vuelistpackage
+    
+For use import a component globally or as an subcomponent.
+
+    import VueListPackage from 'vuelistpackage';
+
+###Props
 
 `listType`: 'ul' (default) | 'ol' | 'div' | null;
 
@@ -72,6 +90,6 @@ Contains a correct globally registered component name.
 
 Contains a message. If `config.emptyListMsg.isComponent` and` config.emptyListMsg.componentName` are true, the message will be inserted into the slot. 
 
-**Methods**
+###Methods
 
 Default callback life cycle: beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed. See [this](https://vuejs.org/v2/guide/instance.html).
