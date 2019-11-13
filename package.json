@@ -1,10 +1,12 @@
 {
   "name": "vuelistpackage",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": false,
   "keywords": [
     "vue",
     "list",
+    "lists",
+    "modern list",
     "vuelistpackage"
   ],
   "description": "Vue package for lists.",

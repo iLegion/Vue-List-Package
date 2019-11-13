@@ -40,8 +40,8 @@
         <template v-else>
             <component v-if="isListMsgComponent" :is="listMsg">{{ this.config.emptyListMsg.text }}</component>
             <div v-else
-                 :id="this.config.emptyListMsg.id"
-                 :class="this.config.emptyListMsg.class">{{ listMsg }}</div>
+                 :id="this.config && this.config.emptyListMsg ? this.config.emptyListMsg.id : ''"
+                 :class="this.config && this.config.emptyListMsg ? this.config.emptyListMsg.class : ''">{{ listMsg }}</div>
         </template>
     </div>
 </template>
@@ -90,10 +90,18 @@
                 return null;
             },
             isListMsgComponent() {
-              return !!(this.config.emptyListMsg.isComponent && this.config.emptyListMsg.componentName);
+              return !!(
+                  this.config &&
+                  this.config.emptyListMsg &&
+                  this.config.emptyListMsg.isComponent &&
+                  this.config.emptyListMsg.componentName
+              );
             },
             listMsg() {
-                return this.config.emptyListMsg.componentName ? this.config.emptyListMsg.componentName : 'List is empty.';
+                return this.config &&
+                this.config.emptyListMsg &&
+                this.config.emptyListMsg.componentName ?
+                    this.config.emptyListMsg.componentName : 'List is empty.';
             },
             type: function () {
                 return this.listTypes.includes(this.listType) ? this.listType : 'ul';
