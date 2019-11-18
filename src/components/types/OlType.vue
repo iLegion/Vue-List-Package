@@ -1,14 +1,20 @@
 <template>
-    <ol class="list-group" :class="styleClass" :style="listType">
-        <LiItem v-for="(item, index, i) in items"
-                :key="i"
-                :i="i"
-                :value="item"
-                :active="active === index"
-                :disabled="disabled === index"
-                :colorActiveElement="colorActiveElement"
-        ></LiItem>
-    </ol>
+  <transition-group name="ol"
+                    tag="ol"
+                    class="list-group"
+                    :class="styleClass"
+                    :style="[listType, listMode]"
+                    :enter-active-class="animations.start"
+                    :leave-active-class="animations.end">
+    <LiItem v-for="(item, index, i) in items"
+            :key="i ? i : index"
+            :i="i ? i : index"
+            :value="item"
+            :active="active === (i ? i : index)"
+            :disabled="disabled === (i ? i : index)"
+            :colorActiveElement="colorActiveElement"
+    ></LiItem>
+  </transition-group>
 </template>
 
 <script>
@@ -16,14 +22,16 @@
 
     export default {
         name: "OlType",
-        components: { LiItem },
+        components: {LiItem},
         props: {
-            items: [ Array, Object ],
+            items: [Array, Object],
             styles: Object,
             styleClass: String,
             active: Number,
             disabled: Number,
             colorActiveElement: String,
+            mode: String,
+            animations: Object,
         },
         computed: {
             listType() {
@@ -37,6 +45,9 @@
                 return {
                     'list-style-type': 'none',
                 };
+            },
+            listMode() {
+                return this.mode === 'horizontal' ? {'flex-direction': 'row'} : null;
             },
         },
     }

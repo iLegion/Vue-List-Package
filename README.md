@@ -18,7 +18,7 @@ For use import a component globally or as an subcomponent.
 
     import VueListPackage from 'vuelistpackage';
 
-###Props
+###Properties
 
 `listType`: 'ul' (default) | 'ol' | 'div' | null;
 
@@ -44,20 +44,13 @@ For badges, add property `badge` for `items` elements if have this.
 
 `styles`: Object | null;
 
-`styles.class`: 'default' | 'materialize' | 'bootstrap' (default) | null;
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| class | default, materialize, bootstrap (default), null | Ready-made styles for the list. |
+| listType | String, null | See [this](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type) |
+| colorActive | For bootstrap: primary (default), secondary, success, danger, null | Color for active element |
+| | For materialize: primary (default), red, purple, null | Color for active element |
    
-Ready-made styles for the list.
-   
-`styles.listType`: See [this](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type) | null;
-   
-`styles.colorActive`: 
-
-For bootstrap: 'primary' (default) | 'secondary' | 'success' | 'danger' | null;
-
-For materialize: 'primary' (default) | 'red' | 'purple' | null;
-   
-Color for active element.
-
 `active`: String | null;
 
 The number or property name of the active element.
@@ -66,29 +59,26 @@ The number or property name of the active element.
 
 The number or property name of the disabled element.
 
-`config`: Object | null,
+`config`: Object | null
 
-`config.emptyListMsg` is object with config for message if list is empty.
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| mode | String | Mode fo list. 'horizontal' for horizontal list and 'vertical' for vertical list. | 
+| emptyListMsg | Object | Config for message if list is empty. |
+| emptyListMsg.class | String, null | ID for div element. |
+| emptyListMsg.class | String, Array, null | Classname for div element. |
+| emptyListMsg.isComponent | Boolean, null | Is the message component. |
+| emptyListMsg.componentName | String, null | Contains a correct globally registered component name. |
+| emptyListMsg.text | String, null | Contains a message. If `config.emptyListMsg.isComponent` and `config.emptyListMsg.componentName` are true, the message will be inserted into the slot. |
 
-`config.emptyListMsg.class`: String | null
+`animations`: Object | null
 
-ID for div element.
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| start | String | Class for start animation. You can use custom css libraries |
+| end | String | Class for end animation. You can user custom css libraries. |
 
-`config.emptyListMsg.class`: String | Array | null;
-
-Classname for div element.
-
-`config.emptyListMsg.isComponent`: Boolean | null;
-
-Is the message component.
-
-`config.emptyListMsg.componentName`: 'String' | null;
-
-Contains a correct globally registered component name.
-
-`config.emptyListMsg.text`: 'String' | null;
-
-Contains a message. If `config.emptyListMsg.isComponent` and` config.emptyListMsg.componentName` are true, the message will be inserted into the slot. 
+**`All properties is reactive.`**
 
 ###Methods
 
