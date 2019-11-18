@@ -131,19 +131,23 @@
                 return this.config && this.config.mode ? this.config.mode : 'vertical';
             },
             l_animations() {
-                if (Object.keys(this.animations).length) {
+                if (typeof this.animations === 'object' && Object.keys(this.animations).length) {
                     return {
                         start: this.animations.start ? this.animations.start : null,
                         end: this.animations.end ? this.animations.end : null,
                     };
                 }
 
-                return null;
+                return {
+                    start: null,
+                    end: null,
+                };
             },
         },
         data() {
             return {
                 listTypes: ['ul', 'ol', 'div'],
+                lastItems: this.items,
             }
         },
         beforeCreate() {

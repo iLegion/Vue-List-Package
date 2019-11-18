@@ -1,6 +1,8 @@
 # Vue List Package
 
-##Installation
+![Logo](https://i.ibb.co/Khdzp57/Vue-List-Package-Logo.png)
+
+## Installation
 
     git clone https://github.com/iLegion/Vue-List-Package.git 
     cd Vue-List-Package
@@ -18,7 +20,7 @@ For use import a component globally or as an subcomponent.
 
     import VueListPackage from 'vuelistpackage';
 
-###Properties
+### Properties
 
 `listType`: 'ul' (default) | 'ol' | 'div' | null;
 
@@ -80,6 +82,6 @@ The number or property name of the disabled element.
 
 **`All properties is reactive.`**
 
-###Methods
+### Methods
 
 Default callback life cycle: beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed. See [this](https://vuejs.org/v2/guide/instance.html).
