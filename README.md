@@ -93,3 +93,8 @@ Called after list is updated.
 `clickOnItem`:
 
 Called after click event.
+
+
+### Contributing
+
+If you would like to start issues, one easy way to get started is send this on [GitHub](https://github.com/iLegion/Vue-List-Package/issues)
