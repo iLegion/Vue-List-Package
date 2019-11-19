@@ -38,7 +38,7 @@ If `listType` does not match any of the types above, then the default value will
 
 If `items` is empty return `emptyListMsg` message.
 
-If `items` elements is Object, it must have prop **title**(priority) or **name** for view.
+If `items` elements is Object, it must have prop **title**(priority) or **name** for view and can contains prop `active` and `disabled` with value 0 or 1.
 
 If `listType` is 'div', `items` property of links must contains **href**(priority) or **link** for the link.
 
@@ -59,7 +59,7 @@ The number or property name of the active element.
    
 `disabled`: String | null
 
-The number or property name of the disabled element.
+The number or property name of the disabled element. 
 
 `config`: Object | null
 
@@ -97,4 +97,4 @@ Called after click event.
 
 ### Contributing
 
-If you would like to start issues, one easy way to get started is send this on [GitHub](https://github.com/iLegion/Vue-List-Package/issues)
+If you would like to start issues, one easy way to get started is send this on [GitHub](https://github.com/iLegion/Vue-List-Package/issues).

@@ -14,7 +14,7 @@
     export default {
         name: "AItem",
         props: {
-            i: Number,
+            i: [Number, String],
             value: [ String, Object ],
             active: Boolean,
             disabled: Boolean,

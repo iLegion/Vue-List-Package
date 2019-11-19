@@ -10,8 +10,8 @@
             :key="i ? i : index"
             :i="i ? i : index"
             :value="item"
-            :active="active === (i ? i : index)"
-            :disabled="disabled === (i ? i : index)"
+            :active="typeof active === 'object' ? item.active : active === (i ? i : index)"
+            :disabled="typeof disabled === 'object' ? item.disabled : disabled === (i ? i : index)"
             :colorActiveElement="colorActiveElement"
             @clickOnItem="$emit('clickOnItem')"
     ></LiItem>
