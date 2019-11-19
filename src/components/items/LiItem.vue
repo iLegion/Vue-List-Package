@@ -1,6 +1,7 @@
 <template>
     <li class="list-group-item"
         :class="[{ active: active }, { disabled: disabled}, colorActiveElement, { 'has-badge': badge }]"
+        @click="$emit('clickOnItem')"
     >
         {{ content }}
 

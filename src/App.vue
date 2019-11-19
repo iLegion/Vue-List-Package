@@ -15,6 +15,8 @@
                 :colorActiveElement="colorActiveElement"
                 :mode="mode"
                 :animations="l_animations"
+                @listUpdated="$emit('listUpdated')"
+                @clickOnItem="$emit('clickOnItem')"
         ></UlType>
       </template>
 
@@ -27,6 +29,8 @@
                 :colorActiveElement="colorActiveElement"
                 :mode="mode"
                 :animations="l_animations"
+                @listUpdated="$emit('listUpdated')"
+                @clickOnItem="$emit('clickOnItem')"
         ></OlType>
       </template>
 
@@ -39,6 +43,8 @@
                  :colorActiveElement="colorActiveElement"
                  :mode="mode"
                  :animations="l_animations"
+                 @listUpdated="$emit('listUpdated')"
+                 @clickOnItem="$emit('clickOnItem')"
         ></DivType>
       </template>
     </template>
@@ -147,7 +153,6 @@
         data() {
             return {
                 listTypes: ['ul', 'ol', 'div'],
-                lastItems: this.items,
             }
         },
         beforeCreate() {

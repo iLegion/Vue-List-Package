@@ -13,6 +13,7 @@
            :active="active === (i ? i : index)"
            :disabled="disabled === (i ? i : index)"
            :colorActiveElement="colorActiveElement"
+           @clickOnItem="$emit('clickOnItem')"
     ></AItem>
   </transition-group>
 </template>
@@ -37,6 +38,9 @@
             listMode() {
                 return this.mode === 'horizontal' ? {'flex-direction': 'row'} : null;
             },
+        },
+        updated() {
+            this.$emit('listUpdated');
         },
     }
 </script>

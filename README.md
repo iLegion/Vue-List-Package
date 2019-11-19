@@ -84,4 +84,12 @@ The number or property name of the disabled element.
 
 ### Methods
 
-Default callback life cycle: beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed. See [this](https://vuejs.org/v2/guide/instance.html).
+Default callback life cycle: `beforeCreate`, `created`, `beforeMount`, `mounted`, `beforeUpdate`, `updated`, `beforeDestroy`, `destroyed`. See [this](https://vuejs.org/v2/guide/instance.html).
+
+`listUpdated`:
+
+Called after list is updated.
+
+`clickOnItem`:
+
+Called after click event.

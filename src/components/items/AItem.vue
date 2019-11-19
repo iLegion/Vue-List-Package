@@ -1,6 +1,7 @@
 <template>
     <a :href="link" class="list-group-item list-group-item-action"
        :class="[{ active: active }, { disabled: disabled}, colorActiveElement, { 'has-badge': badge }]"
+       @click="$emit('clickOnItem')"
     >
         {{ content }}
 
