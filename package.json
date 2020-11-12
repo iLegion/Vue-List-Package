@@ -1,5 +1,5 @@
 {
-  "name": "vuelistpackage",
+  "name": "@iLegion/vuelistpackage",
   "version": "1.0.1",
   "private": false,
   "keywords": [
@@ -16,6 +16,9 @@
   },
   "repository": "https://github.com/iLegion/Vue-List-Package.git",
   "bugs": "https://github.com/iLegion/Vue-List-Package/issues",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "license": "MIT",
   "files": [
     "dist/*",
