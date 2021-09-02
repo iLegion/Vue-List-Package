@@ -2,20 +2,15 @@
   <div id="app" class="vue-list-package">
 
     <template v-if="countItems">
-      <template v-if="header">
-        <div class="header">{{ header }}</div>
-      </template>
-
       <template v-if="type === 'ul'">
         <UlType :items="items"
                 :styles="styles"
                 :styleClass="styleClass"
                 :active="activeElement"
-                :disabled="disabledElement"
+                :disable="disabledElement"
                 :colorActiveElement="colorActiveElement"
                 :mode="mode"
                 :animations="l_animations"
-                @listUpdated="$emit('listUpdated')"
                 @clickOnItem="$emit('clickOnItem')"
         ></UlType>
       </template>
@@ -25,11 +20,10 @@
                 :styles="styles"
                 :styleClass="styleClass"
                 :active="activeElement"
-                :disabled="disabledElement"
+                :disable="disabledElement"
                 :colorActiveElement="colorActiveElement"
                 :mode="mode"
                 :animations="l_animations"
-                @listUpdated="$emit('listUpdated')"
                 @clickOnItem="$emit('clickOnItem')"
         ></OlType>
       </template>
@@ -39,12 +33,11 @@
                  :styles="styles"
                  :styleClass="styleClass"
                  :active="activeElement"
-                 :disabled="disabledElement"
+                 :disable="disabledElement"
                  :colorActiveElement="colorActiveElement"
                  :mode="mode"
                  :animations="l_animations"
-                 @listUpdated="$emit('listUpdated')"
-                 @clickOnItem="$emit('clickOnItem')"
+                 @onClickItem="$emit('onClickItem')"
         ></DivType>
       </template>
     </template>
@@ -60,9 +53,9 @@
 </template>
 
 <script>
-    import UlType from "./components/types/UlType";
-    import OlType from "./components/types/OlType";
-    import DivType from "./components/types/DivType";
+    import UlType from "./components/Types/UlType";
+    import OlType from "./components/Types/OlType";
+    import DivType from "./components/Types/DivType";
 
     export default {
         name: 'VueListPackage',
@@ -83,7 +76,6 @@
                     text: String,
                 }
             },
-            header: String,
             listType: String,
             styles: {
                 class: String,
@@ -105,18 +97,14 @@
                 return null;
             },
             isListMsgComponent() {
-                return !!(
-                    this.config &&
-                    this.config.emptyListMsg &&
-                    this.config.emptyListMsg.isComponent &&
-                    this.config.emptyListMsg.componentName
-                );
+              const emptyListMsg = this.config?.emptyListMsg;
+
+              return emptyListMsg?.isComponent && emptyListMsg?.componentName;
             },
             listMsg() {
-                return this.config &&
-                this.config.emptyListMsg &&
-                this.config.emptyListMsg.componentName ?
-                    this.config.emptyListMsg.componentName : 'List is empty.';
+              const emptyListMsg = this.config?.emptyListMsg;
+
+              return emptyListMsg?.componentName ?? 'List is empty.';
             },
             type: function () {
                 return this.listTypes.includes(this.listType) ? this.listType : 'ul';
@@ -184,14 +172,6 @@
 
 <style lang="scss">
   .vue-list-package {
-    .header {
-      margin: 0 0 16px 0;
-      font-size: 1.35rem;
-      font-weight: 500;
-      text-align: center;
-      line-height: 1.2;
-    }
-
     .bootstrap {
       margin: 0;
       padding: 0;
@@ -199,17 +179,17 @@
       flex-direction: column;
 
       .list-group-item {
-        &:first-child {
-          border-top-left-radius: .25rem;
-          border-top-right-radius: .25rem;
-        }
-
         position: relative;
         display: block;
         padding: .75rem 1.25rem;
         margin-bottom: -1px;
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, .125);
+
+        &:first-child {
+          border-top-left-radius: .25rem;
+          border-top-right-radius: .25rem;
+        }
 
         &.active, &.active.primary, &.active.default {
           color: #fff;
@@ -233,7 +213,7 @@
           }
         }
 
-        &.disabled {
+        &.disable {
           color: #6c757d;
           pointer-events: none;
           background-color: #fff;

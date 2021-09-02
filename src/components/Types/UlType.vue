@@ -1,6 +1,6 @@
 <template>
-  <transition-group name="ol"
-                    tag="ol"
+  <transition-group name="ul"
+                    tag="ul"
                     class="list-group"
                     :class="styleClass"
                     :style="[listType, listMode]"
@@ -9,9 +9,9 @@
     <LiItem v-for="(item, index, i) in items"
             :key="i ? i : index"
             :i="i ? i : index"
-            :value="item"
+            :item="item"
             :active="typeof active === 'object' ? item.active : active === (i ? i : index)"
-            :disabled="typeof disabled === 'object' ? item.disabled : disabled === (i ? i : index)"
+            :disable="typeof disable === 'object' ? item.disable : disable === (i ? i : index)"
             :colorActiveElement="colorActiveElement"
             @clickOnItem="$emit('clickOnItem')"
     ></LiItem>
@@ -19,24 +19,24 @@
 </template>
 
 <script>
-    import LiItem from "../items/LiItem";
+    import LiItem from "../Items/LiItem";
 
     export default {
-        name: "OlType",
+        name: "UlType",
         components: {LiItem},
         props: {
             items: [Array, Object],
             styles: Object,
             styleClass: String,
             active: Number,
-            disabled: Number,
+            disable: Number,
             colorActiveElement: String,
             mode: String,
             animations: Object,
         },
         computed: {
             listType() {
-                if (this.styles && this.styles.listType) {
+                if (this.styles?.listType) {
                     return {
                         'list-style-type': this.styles.listType,
                         'list-style-position': 'inside',
@@ -50,10 +50,7 @@
             listMode() {
                 return this.mode === 'horizontal' ? {'flex-direction': 'row'} : null;
             },
-        },
-        updated() {
-            this.$emit('listUpdated');
-        },
+        }
     }
 </script>
 

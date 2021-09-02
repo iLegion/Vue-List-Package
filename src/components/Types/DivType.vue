@@ -9,17 +9,17 @@
     <AItem v-for="(item, index, i) in items"
            :key="i ? i : index"
            :i="i ? i : index"
-           :value="item"
+           :item="item"
            :active="typeof active === 'object' ? item.active : active === (i ? i : index)"
-           :disabled="typeof disabled === 'object' ? item.disabled : disabled === (i ? i : index)"
+           :disable="typeof disable === 'object' ? item.disabled : disable === (i ? i : index)"
            :colorActiveElement="colorActiveElement"
-           @clickOnItem="$emit('clickOnItem')"
+           @onClickItem="$emit('onClickItem')"
     ></AItem>
   </transition-group>
 </template>
 
 <script>
-    import AItem from '../items/AItem';
+    import AItem from '../Items/AItem';
 
     export default {
         name: "DivType",
@@ -29,7 +29,7 @@
             styles: Object,
             styleClass: String,
             active: Number,
-            disabled: Number,
+            disable: Number,
             colorActiveElement: String,
             mode: String,
             animations: Object,
@@ -38,10 +38,7 @@
             listMode() {
                 return this.mode === 'horizontal' ? {'flex-direction': 'row'} : null;
             },
-        },
-        updated() {
-            this.$emit('listUpdated');
-        },
+        }
     }
 </script>
 

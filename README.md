@@ -30,15 +30,11 @@ See [ul](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul) and
 
 If `listType` does not match any of the types above, then the default value will be set.
 
-`header`: String | null (default);
-
-`header` contains header for list.
-
 `items`: Array | Object | null;
 
-If `items` is empty return `emptyListMsg` message.
+If `items` is empty, returned `config.emptyListMsg` message.
 
-If `items` elements is Object, it must have prop **title**(priority) or **name** for view and can contains prop `active` and `disabled` with value 0 or 1.
+If `items` is elements have Object type, it must have prop **value** and can contains prop `active` and `disable` with value 0 or 1.
 
 If `listType` is 'div', `items` property of links must contains **href**(priority) or **link** for the link.
 
@@ -86,13 +82,9 @@ The number or property name of the disabled element.
 
 Default callback life cycle: `beforeCreate`, `created`, `beforeMount`, `mounted`, `beforeUpdate`, `updated`, `beforeDestroy`, `destroyed`. See [this](https://vuejs.org/v2/guide/instance.html).
 
-`listUpdated`:
+`onClickItem`:
 
-Called after list is updated.
-
-`clickOnItem`:
-
-Called after click event.
+Called after click event. Returned 
 
 
 ### Contributing
